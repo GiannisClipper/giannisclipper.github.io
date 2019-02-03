@@ -11,7 +11,7 @@
       text-align:center;
     }
     header {
-      margin:1em;
+      margin:2em;
     }
     h1 {
       display:inline;
@@ -44,7 +44,7 @@
       opacity:1;
       border:2px solid lightskyblue;
       border-radius:25px;
-      margin:1em;
+      margin:2em;
       font-size:0.9em;
       font-weight:600;
       padding:0.5em 1em 0.5em 1em;
@@ -67,13 +67,22 @@
   </header>
   <section>
     <div class='box'>
+      <!--New York, default refresh every 15'-->
+      <script>new WeatherApiWidget({latitude:40.71427, longitude:-74.00597});</script>
+      <br><code>&lt;script&gt;
+      <br/>new WeatherApiWidget({
+      <br/>latitude:40.71427, 
+      <br/>longitude:-74.00597
+      <br/>}); &lt;/script&gt;</code>
+    </div>
+    <div class='box'>
       <!--Auto (from IP), set refresh every 10'-->
-      <script>new WeatherApiWidget({timeRefresh:600000, width:220, border:'2px solid tomato', background:'khaki', color:'tomato'});</script>
+      <script>new WeatherApiWidget({timeRefresh:600000, width:220, border:'1px dashed tomato', background:'khaki', color:'tomato'});</script>
       <br><code>&lt;script&gt;
       <br/>new WeatherApiWidget({
       <br/>timeRefresh:600000, 
       <br/>width:220, 
-      <br/>border:'2px solid tomato',
+      <br/>border:'1px dashed tomato',
       <br/>background:'khaki', 
       <br/>color:'tomato'
       <br/>}); &lt;/script&gt;</code>
@@ -85,15 +94,6 @@
       <br/>new WeatherApiWidget({
       <br/>latitude:40.64361, 
       <br/>longitude:22.93086
-      <br/>}); &lt;/script&gt;</code>
-    </div>
-    <div class='box'>
-      <!--New York, default refresh every 15'-->
-      <script>new WeatherApiWidget({latitude:40.71427, longitude:-74.00597});</script>
-      <br><code>&lt;script&gt;
-      <br/>new WeatherApiWidget({
-      <br/>latitude:40.71427, 
-      <br/>longitude:-74.00597
       <br/>}); &lt;/script&gt;</code>
     </div>
     <div class='box'>

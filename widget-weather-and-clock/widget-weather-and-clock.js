@@ -201,9 +201,11 @@ class WeatherApiWidget extends ApiWidget {
       <p><span class="location"></span><span class="localtime"></span></p>
       <p><span class="temperature"></span> &#8451;</p>
       <img class="icon"/>
-      <p class="description"></p>
-      <p>ΥΓΡΑΣΙΑ <span class="humidity"></span>%</p>
-      <p>ΑΝΕΜΟΣ <span class="wind"></span></p>
+      <p>
+      <span class="description"></span>
+      <span class="humidity"></span>
+      <span class="wind"></span>
+      </p>
       <span class="tooltip"></span>
     `;
   }
@@ -218,7 +220,7 @@ class WeatherApiWidget extends ApiWidget {
     this.$body.querySelector('.location').style.fontSize='1.25em';
     this.$body.querySelector('.localtime').style.border=`1px dotted ${args['color']}`;
     this.$body.querySelector('.temperature').style.fontSize='1.50em';
-    this.$body.querySelector('.description').style.fontSize='1.20em';
+    //this.$body.querySelector('.description').style.fontSize='1.20em';
     this.$body.querySelector('.tooltip').style.fontSize='0.75em';
   }
 
@@ -241,15 +243,25 @@ class WeatherApiWidget extends ApiWidget {
       this.location=this.location?this.location:res.name;
       this.$body.querySelector('.location').textContent=await this.locationInGreek();
       this.$body.querySelector('.icon').src=this.getIcon(res.weather[0].icon);
-      this.$body.querySelector('.description').textContent=res.weather[0].description;
       this.$body.querySelector('.temperature').textContent=Math.round(Number(res.main.temp));
-      this.$body.querySelector('.humidity').textContent=res.main.humidity;
-      this.$body.querySelector('.wind').textContent=res.wind.speed;
+      this.$body.querySelector('.description').textContent=noTon(res.weather[0].description.toUpperCase());
+      this.$body.querySelector('.humidity').textContent=`ΥΓΡΑΣΙΑ ${res.main.humidity}%`;
+      this.$body.querySelector('.wind').textContent=`ΑΝΕΜΟΙ ${Math.round(Number(res.wind.speed))}`;
       this.$body.querySelector('.tooltip').textContent=`updated ${(new Date).toString().slice(16,24)}`;
     } else {
       this.$body.querySelector('.tooltip').textContent='no response';
     }
   }
+}
+
+function noTon(text) {
+  //general string function removes greek intonation
+  let charsInTon=['Ά','Έ','Ή','Ί','Ό','Ύ','Ώ','ά','έ','ή','ί','ό','ύ','ώ'];
+  let charsNoTon=['Α','Ε','Η','Ι','Ο','Υ','Ω','α','ε','η','ι','ο','υ','ω'];
+  for (i=0; i<charsInTon.length; i++) {
+    text=text.replace(charsInTon[i], charsNoTon[i]);
+  }
+  return text;
 }
 
 //code start running from here
