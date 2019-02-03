@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Demo widget-weather-and-clock</title>
+  <style>
+    body {
+      background:lightslategrey;
+      font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      color:lightskyblue;
+      text-align:center;
+    }
+    header {
+      margin:1em;
+    }
+    h1 {
+      display:inline;
+      border:2px solid lightskyblue;
+      border-radius:25px;
+      padding:0.5em 1em 0.5em 1em;
+      font-size:1.5em;
+      font-weight:600;
+    }
+    code {
+      display:inline-block;
+      padding-top:0.5em;
+      text-align:left;
+    }
+
+    section {
+      width:90%;
+      margin-left:auto;
+      margin-right:auto;
+    }
+    .box {
+      display:inline-block;
+      vertical-align:top;
+      margin-top:0.5em;
+      margin-bottom:0.5em;
+    }
+
+    footer {
+      display:inline-block;
+      opacity:1;
+      border:2px solid lightskyblue;
+      border-radius:25px;
+      margin:1em;
+      font-size:0.9em;
+      font-weight:600;
+      padding:0.5em 1em 0.5em 1em;
+    }
+    footer a {
+      text-decoration:none;
+      opacity:0.25;
+    }
+    footer a:link, footer a:visited {
+    color:darkred;
+}
+  </style>
+  <script src='widget-weather-and-clock.js'></script>
+</head>
+
+<body>
+  <header>
+    <br/><h1>Demo widget-weather-and-clock</h1>
+    <br/><br/><code>User include in head section a tag like this: &lt;script src='widget-weather-and-clock.js'&gt;&lt;/script&gt; <br/>and in body section one or more tags like the following examples: </code>
+  </header>
+  <section>
+    <div class='box'>
+      <!--Auto (from IP), set refresh every 10'-->
+      <script>new WeatherApiWidget({timeRefresh:600000, width:220, border:'2px solid tomato', background:'khaki', color:'tomato'});</script>
+      <br><code>&lt;script&gt;
+      <br/>new WeatherApiWidget({
+      <br/>timeRefresh:600000, 
+      <br/>width:220, 
+      <br/>border:'2px solid tomato',
+      <br/>background:'khaki', 
+      <br/>color:'tomato'
+      <br/>}); &lt;/script&gt;</code>
+    </div>
+    <div class='box'>
+      <!--Thessaloniki, default refresh every 15'-->
+      <script>new WeatherApiWidget({latitude:40.64361, longitude:22.93086});</script>
+      <br><code>&lt;script&gt;
+      <br/>new WeatherApiWidget({
+      <br/>latitude:40.64361, 
+      <br/>longitude:22.93086
+      <br/>}); &lt;/script&gt;</code>
+    </div>
+    <div class='box'>
+      <!--New York, default refresh every 15'-->
+      <script>new WeatherApiWidget({latitude:40.71427, longitude:-74.00597});</script>
+      <br><code>&lt;script&gt;
+      <br/>new WeatherApiWidget({
+      <br/>latitude:40.71427, 
+      <br/>longitude:-74.00597
+      <br/>}); &lt;/script&gt;</code>
+    </div>
+    <div class='box'>
+      <!--Moscow, default refresh every 15'-->
+      <script>new WeatherApiWidget({latitude:55.753887, longitude:37.621225});</script>
+      <br><code>&lt;script&gt;
+      <br/>new WeatherApiWidget({
+      <br/>latitude:55.753887, 
+      <br/>longitude:37.621225
+      <br/>}); &lt;/script&gt;</code>    
+    </div>
+    </section>
+  <footer>
+    Athens 2019, Giannis Clipper, powered by <a href='https://openweathermap.org/api'>openweathermap.org</a>,
+    <br/><a href='https://tech.yandex.com/translate/'>yandex.com</a>, <a href='https://timezonedb.com/api'>timezonedb.com</a> and <a href='https://ipapi.co/'>ipapi.co</a>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,50 @@
+.widget-weather-and-clock {
+  all: initial;
+  display: inline-block;
+  position: relative;
+  width: 200px;
+  background: lightskyblue;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: brown;
+  text-align: center;
+  padding: 0.5em;
+}
+
+.widget-weather-and-clock * {
+  padding: 0.25em;
+  all: unset;
+  display: block;
+  padding: 0.25em;
+}
+
+.widget-weather-and-clock span,
+.widget-weather-and-clock img {
+  display: inline-block;
+}
+
+.widget-weather-and-clock .localtime {
+  border: 1px dotted;
+  border-radius: 30%;
+  margin-left: 1em;
+}
+
+.widget-weather-and-clock img {
+  width: 30%;
+  padding-bottom: 0;
+}
+
+.widget-weather-and-clock .description {
+  padding-top: 0;
+  padding-bottom: 0.5em;
+}
+
+.widget-weather-and-clock .tooltip {
+  visibility: hidden;
+  position: absolute; 
+  background: white;
+  color: grey;
+  text-align: left;
+  padding: 0 0.5em 0 0.5em;
+  bottom: 0; 
+  right: 0;
+}
