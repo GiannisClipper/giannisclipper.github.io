@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Software Development Tools</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    document.addEventListener('DOMContentLoaded', ()=>{
+      window.onscroll=()=>{
+        document.querySelector('header').className=(window.scrollY===0)?'thicker':'';
+        document.querySelector('footer p').className=(window.innerHeight+window.scrollY>=document.body.offsetHeight)?'thicker':'';
+      }
+    });
+  </script>
+
+  <style>
+  * {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+  }
+  body {
+    --color-header: #aaaa99;
+    --color-header-text: rgba(0,0,0,0.75);
+    --color-footer: #aaaa99;
+    --color-footer-text: rgba(0,0,0,0.75);
+    --color-languages: #23784f;
+    --color-frameworks: #144a7a;
+    --color-databases: #d82d2b;
+    --color-editors: #a99c2a;
+    --color-hosting: #6c2480;
+    background-image: url("images/background-generic.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    font-family: "Trebuchet MS", fantasy;
+  }
+
+  @keyframes show_gradient {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+  @keyframes loop_text_colors {
+    0% {color: var(--color-languages);}
+    20% {color: var(--color-frameworks);}
+    40% {color: var(--color-databases);}
+    60% {color: var(--color-editors);}
+    80% {color: var(--color-hosting);}
+    100% {color: var(--color-languages);}
+  }
+  @keyframes loop_border_languages {
+    0% {border-left-color: transparent; border-top-color: var(--color-languages);}
+    25% {border-top-color: transparent; border-right-color: var(--color-languages);}
+    50% {border-right-color: transparent; border-bottom-color: var(--color-languages);}
+    75% {border-bottom-color: transparent; border-left-color: var(--color-languages);}
+    100% {border-left-color: transparent; border-top-color: var(--color-languages);}
+  }
+  @keyframes loop_border_frameworks {
+    0% {border-left-color: transparent; border-top-color: var(--color-frameworks);}
+    25% {border-top-color: transparent; border-right-color: var(--color-frameworks);}
+    50% {border-right-color: transparent; border-bottom-color: var(--color-frameworks);}
+    75% {border-bottom-color: transparent; border-left-color: var(--color-frameworks);}
+    100% {border-left-color: transparent; border-top-color: var(--color-frameworks);}
+  }
+  @keyframes loop_border_databases {
+    0% {border-left-color: transparent; border-top-color: var(--color-databases);}
+    25% {border-top-color: transparent; border-right-color: var(--color-databases);}
+    50% {border-right-color: transparent; border-bottom-color: var(--color-databases);}
+    75% {border-bottom-color: transparent; border-left-color: var(--color-databases);}
+    100% {border-left-color: transparent; border-top-color: var(--color-databases);}
+  }
+  @keyframes loop_border_editors {
+    0% {border-left-color: transparent; border-top-color: var(--color-editors);}
+    25% {border-top-color: transparent; border-right-color: var(--color-editors);}
+    50% {border-right-color: transparent; border-bottom-color: var(--color-editors);}
+    75% {border-bottom-color: transparent; border-left-color: var(--color-editors);}
+    100% {border-left-color: transparent; border-top-color: var(--color-editors);}
+  }
+  @keyframes loop_border_hosting {
+    0% {border-left-color: transparent; border-top-color: var(--color-hosting);}
+    25% {border-top-color: transparent; border-right-color: var(--color-hosting);}
+    50% {border-right-color: transparent; border-bottom-color: var(--color-hosting);}
+    75% {border-bottom-color: transparent; border-left-color: var(--color-hosting);}
+    100% {border-left-color: transparent; border-top-color: var(--color-hosting);}
+  }
+
+  header {
+    background-color: var(--color-header);
+    text-align: center;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+    padding: 1rem;
+    transition: padding 1s;
+    animation-name: show_gradient;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+  }
+  header.thicker {
+    padding: 2rem;
+  }
+
+  header h1 {
+    font-size: 1.75rem;
+    font-weight: 900;
+  }
+  header nav {
+    vertical-align: baseline;
+  }
+  header h1, header nav, header li {
+    display: inline-block;
+  }
+  header a {
+    color: var(--color-header-text);
+    border: 4px solid transparent;
+  }
+  header h1 a {
+    animation-name: loop_text_colors;
+    animation-duration: 12.5s;
+    animation-iteration-count: infinite;
+  }
+  header li a:hover {
+    border-bottom-color: var(--color-header-text);
+  }
+
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  section h2 {
+    background-color: transparent;
+    font-size: 2.5rem;
+    font-weight: 900;
+    text-shadow: 2px 2px rgba(0,0,0,0.75);
+    border: 4px solid transparent;
+    border-radius: 2px;
+    padding: 1em;
+    margin: 2em;
+    display: inline-block;
+  }
+
+  section.languages h2 {
+    color: var(--color-languages);
+    animation: loop_border_languages 3s linear infinite;
+  }
+  section.frameworks h2 {
+    color: var(--color-frameworks);
+    animation: loop_border_frameworks 3s linear infinite;
+  }
+  section.databases h2 {
+    color: var(--color-databases);
+    animation: loop_border_databases 3s linear infinite;
+  }
+  section.editors h2 {
+    color: var(--color-editors);
+    animation: loop_border_editors 3s linear infinite;
+  }
+  section.hosting h2 {
+    color: var(--color-hosting);
+    animation: loop_border_hosting 3s linear infinite;
+  }
+
+  section div {
+    padding: 2em;
+  }
+  section.languages div {
+    background-color: var(--color-languages);
+  }
+  section.frameworks div {
+    background-color: var(--color-frameworks);
+  }
+  section.databases div {
+    background-color: var(--color-databases);;
+  }
+  section.editors div {
+    background-color: var(--color-editors);
+  }
+  section.hosting div {
+    background-color: var(--color-hosting);
+  }
+
+  section a {
+    display: inline-block;
+    width: 200px;
+    border: 4px dashed transparent;
+    margin: 2em;
+    vertical-align: middle;
+  }
+  section a:hover {
+    border-color: grey;
+  }
+  section img {
+    width: 100%;
+  }
+
+  footer {
+    margin-top: 6rem;
+    height: 2rem;
+    position: relative;
+  }
+  footer p {
+    background-color: var(--color-footer);
+    color: var(--color-footer-text);
+    font-size: 1rem;
+    text-align: center;
+    padding-top: 1rem;
+    width: 100%;
+    height: 0%;
+    transition: height 1s;
+    position: absolute;
+    bottom: 0;
+  }
+  footer p.thicker {
+    height: 100%;
+  }
+
+  </style>
+</head>
+
+<body>
+  <header class="thicker">
+    <h1><a href="index.html">SoftwareDevelopmentTools</a></h1>
+    <nav>
+      <ul>
+        <li class="languages"><a href="#languages">Languages</a></li>
+        <li class="frameworks"><a href="#frameworks">Frameworks</a></li>
+        <li class="databases"><a href="#databases">Databases</a></li>
+        <li class="editors"><a href="#editors">Editors</a></li>
+        <li class="hosting"><a href="#hosting">Hosting</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container">
+    <section class="languages" id="languages">
+      <h2>Languages</h2>
+      <div>
+        <a href="https://www.python.org"><img src="images/python.png"></a>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"><img src="images/javascript.png"></a>
+        <a href="https://www.w3.org/standards/webdesign/htmlcss"><img src="images/html-css.png"></a>
+        <a href="http://php.net"><img src="images/php.png"></a>
+      </div>
+    </section>
+
+    <section class="frameworks" id="frameworks">
+      <h2>Frameworks</h2>
+      <div>
+        <a href="http://flask.pocoo.org"><img src="images/flask.png"></a>
+        <a href="https://nodejs.org"><img src="images/nodejs.png"></a>
+      </div>
+    </section>
+
+    <section class="databases" id="databases">
+      <h2>Databases</h2>
+      <div>
+        <a href="https://www.sqlite.org"><img src="images/sqlite.png"></a>
+        <a href="https://www.postgresql.org"><img src="images/postgresql.png"></a>
+        <a href="https://www.mysql.com"><img src="images/mysql.png"></a>
+      </div>
+    </section>
+
+    <section class="editors" id="editors">
+      <h2>Editors</h2>
+      <div>
+        <a href="https://atom.io"><img src="images/atom.png"></a>
+        <a href="https://www.sublimetext.com"><img src="images/sublime-text.png"></a>
+      </div>
+    </section>
+
+    <section class="hosting" id="hosting">
+      <h2>Hosting</h2>
+      <div>
+        <a href="https://github.com"><img src="images/github.png"></a>
+        <a href="https://www.heroku.com"><img src="images/heroku.png"></a>
+        <a href="https://www.pythonanywhere.com"><img src="images/pythonanywhere.png"></a>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>giannisClipper, Athens 2018-2019</p>
+  </footer>
+</body>
+</html>
